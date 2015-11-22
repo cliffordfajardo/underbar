@@ -208,8 +208,6 @@ _.filter = function(collection, test) {
 ========================================================================== */
 
 _.reject = function(collection, test) {
-  // TIP: see if you can re-use _.filter() here, without simply
-  // copying code in and modifying it
   return _.filter(collection, function(val, index, collection) {
     if (!(test(val))) return val;
   });
@@ -456,27 +454,6 @@ _.some = function(collection, iterator) {
 
 
 
-  /**
-   * OBJECTS
-   * =======
-   *
-   * In this section, we'll look at a couple of helpers for merging objects.
-   */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*==========================================================================
   _.extend:
 
@@ -536,6 +513,10 @@ _.extend = function(obj) {
   }
   return obj;
 };
+
+
+
+
 
 
 
@@ -665,7 +646,7 @@ _.delay = function(func, wait) {
 
   Randomizes the order of an array's contents.
   _.shuffle([1,2,5,7,0]) ---> random order....
-  
+
 ========================================================================== */
 
 _.shuffle = function(array) {
@@ -694,7 +675,7 @@ _.shuffle = function(array) {
   _.invoke:
 
   Calls the method named by functionOrKey on each value in the list.
-  
+
   Example:
   _.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
   => [[1, 5, 7], [1, 2, 3]]
@@ -732,13 +713,13 @@ if(typeof arguments[1] === "string"){
 
 
 /*==========================================================================
-  _.sortBy:  
+  _.sortBy:
 
   Sort the object's values by a criterion produced by an iterator.
   If iterator is a string, sort objects by that property with the name
   of that string. For example, _.sortBy(people, 'name') should sort
   an array of people by their name.
-  
+
   Example:
   _.sortBy([1, 2, 3, 4, 5, 6], function(num){ return Math.sin(num); });
   => [5, 4, 6, 3, 1, 2]
@@ -760,7 +741,7 @@ if(typeof arguments[1] === "string"){
 
 
 /*==========================================================================
-  _.zip:  
+  _.zip:
 
   Zip together two or more arrays with elements of the same index
   going together.
@@ -798,7 +779,7 @@ _.flatten = function(nestedArray) {
   nestedArray.forEach(function(val) {
     if(Array.isArray(val)){
       results = results.concat(_.flatten(val));
-    } else { 
+    } else {
       results = results.concat(val);
     }
   });
