@@ -2,11 +2,6 @@
 
 > A reimplementation of the popular Underscore.js functional utility library.
 
-## Team
-
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
 
 ## Table of Contents
 
@@ -21,7 +16,7 @@
 
 - Simply download and view the files.
 
-
+![Project Image](http://i.imgur.com/By322z5.png?1)
 
 ### Roadmap
  - Complete a few more of the commonly used Underscore.js functions (e.g, _.throttle, sortBy ... etc)
