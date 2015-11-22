@@ -16,7 +16,7 @@
 
 - Simply download and view the files.
 
-![Project Image](http://i.imgur.com/By322z5.png?1)
+![Project Image](http://i.imgur.com/p4hlOAy.png)
 
 ### Roadmap
  - Complete a few more of the commonly used Underscore.js functions (e.g, _.throttle, sortBy ... etc)
