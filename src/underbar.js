@@ -14,9 +14,6 @@ most the majority of these functions could be further optimized using for-loops,
 breaks and returns, however the purpose of this excercise was to learn to write
 more expressive code.
 
-TAKEAWAYS:
-after reimplementing the majority of the underscore js functions
-from scratch, I learned a tremendous amount about functional programming.
 ==========================================================================*/
 
 
@@ -59,7 +56,6 @@ _.identity = function(val) {
   => 1
   _.first([1,2,3,4,5], 3);
   => [1,2,3]
-
 ==========================================================================*/
 
 _.first = function(array, n) {
@@ -149,7 +145,6 @@ _.each = function(collection, iterator) {
   Example:
   _.indexOf([1, 2, 3], 2);
   => 1
-
 ==========================================================================*/
 
 _.indexOf = function(array, target){
@@ -179,7 +174,6 @@ _.indexOf = function(array, target){
   Example:
   var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
   => [2, 4, 6]
-
 ========================================================================== */
 
 _.filter = function(collection, test) {
@@ -204,7 +198,6 @@ _.filter = function(collection, test) {
   Example:
   var odds = _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
   => [1, 3, 5]
-
 ========================================================================== */
 
 _.reject = function(collection, test) {
@@ -231,7 +224,6 @@ _.reject = function(collection, test) {
   Example:
   _.uniq([1, 2, 1, 4, 1, 3]);
   => [1, 2, 4, 3]
-
 ========================================================================== */
 
 _.uniq = function(array) {
@@ -263,7 +255,6 @@ _.uniq = function(array) {
 
   _.map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
   => [3, 6, 9]
-
 ========================================================================== */
 
 _.map = function(collection, iterator) {
@@ -300,7 +291,6 @@ _.map = function(collection, iterator) {
   var stooges = [{name: 'Abe', age: 7}, {name: 'Ben', age: 8}, {name: 'Cal', age: 9}];
   _.pluck(stooges, 'name');
   => ["Abe", "Ben", "Ca,"]
-
 ========================================================================== */
 
 _.pluck = function(collection, key) {
@@ -332,7 +322,6 @@ _.pluck = function(collection, key) {
    _.reduce([10,20,70], function(total, number){
        return total + number;
      }, 0); // should be 100
-
  ==========================================================================*/
 
 _.reduce = function(collection, iterator, accumulator) {
@@ -364,9 +353,7 @@ _.reduce = function(collection, iterator, accumulator) {
   => true
   _.contains({ a: 4, b: 5, c: 6 }, 5
   => true
-
 ========================================================================== */
-
 
 _.contains = function(collection, target) {
   var found = false;
@@ -384,20 +371,12 @@ _.contains = function(collection, target) {
 
 
 
-
-
-
-
-
-
-
 /*==========================================================================
   _.every:
 
   Determines whether all of the elements match a truth test.
   _.every([2,6,11,12], isEven);
   => false
-
 ========================================================================== */
 
 _.every = function(collection, iterator) {
@@ -434,7 +413,6 @@ _.every = function(collection, iterator) {
   Example:
   _.some([2, 4, 6, 9], EvenCheck);
   => true
-
 ========================================================================== */
 
 _.some = function(collection, iterator) {
@@ -463,7 +441,6 @@ _.some = function(collection, iterator) {
   Example:
   _.extend({name: 'moe'}, {age: 50});
   => {name: 'moe', age: 50}
-
 ========================================================================== */
 
 _.extend = function(obj) {
@@ -500,15 +477,12 @@ _.extend = function(obj) {
   var iceCream = {flavor: "chocolate"};
   _.defaults(iceCream, {flavor: "vanilla", sprinkles: "lots"});
   => {flavor: "chocolate", sprinkles: "lots
-
 ========================================================================== */
 
- _.defaults = function(obj) {
+_.defaults = function(obj) {
   for (var i = 0; i < arguments.length; i++) {
     for (var key in arguments[i]) {
-      if (obj[key] === undefined) {
-        obj[key] = arguments[i][key];
-      }
+      if (obj[key] === undefined) obj[key] = arguments[i][key];
     }
   }
   return obj;
@@ -533,22 +507,21 @@ _.extend = function(obj) {
   var initialize = _.once(createApplication);
   initialize(); //logs....application created
   initialize(); //logs....you already created it
-
 ========================================================================== */
 
-  _.once = function(func) {
-    var alreadyCalled = false;
-    var result;
+_.once = function(func) {
+  var alreadyCalled = false;
+  var result;
 
-    return function() {
-      if (!alreadyCalled) {
-        result = func.apply(this, arguments);
-        alreadyCalled = true;
-      }
-      // The new function always returns the originally computed result.
-      return result;
-    };
+  return function() {
+    if (!alreadyCalled) {
+      result = func.apply(this, arguments);
+      alreadyCalled = true;
+    }
+    // The new function always returns the originally computed result.
+    return result;
   };
+};
 
 
 
@@ -616,7 +589,6 @@ _.memoize = function(func) {
 
   Example:
   _.delay(someFunction, 500, 'a', 'b')  -----> someFunction('a', 'b') after 500ms
-
 ========================================================================== */
 
 
@@ -646,7 +618,6 @@ _.delay = function(func, wait) {
 
   Randomizes the order of an array's contents.
   _.shuffle([1,2,5,7,0]) ---> random order....
-
 ========================================================================== */
 
 _.shuffle = function(array) {
@@ -670,7 +641,6 @@ _.shuffle = function(array) {
 
 
 
-
 /*==========================================================================
   _.invoke:
 
@@ -679,32 +649,62 @@ _.shuffle = function(array) {
   Example:
   _.invoke([[5, 1, 7], [3, 2, 1]], 'sort');
   => [[1, 5, 7], [1, 2, 3]]
-
 ========================================================================== */
 
-
-
 _.invoke = function(collection, functionOrKey) {
-//grab from 2nd index onward
-var args = Array.prototype.slice.call(arguments,2);
+  //grab from 2nd index onward
+  var args = Array.prototype.slice.call(arguments,2);
 
 
-//if user passes a function
-if(typeof arguments[1] === "function"){
-  return _.map(collection, function(val) {
-    //you can use call or apply here..args doesn't really matter unless you function takes arguments
-    //using apply here to call the function and the functions this to the element we're iterating on
-    return functionOrKey.apply(val, args);
-  });
-}
+  //if user passes a function
+  if(typeof arguments[1] === "function"){
+    return _.map(collection, function(val) {
+      //you can use call or apply here..args doesn't really matter unless you function takes arguments
+      //using apply here to call the function and the functions this to the element we're iterating on
+      return functionOrKey.apply(val, args);
+    });
+  }
 
-//if user passes a method name
-if(typeof arguments[1] === "string"){
-  return _.map(collection, function(val){
-    return val[functionOrKey]();
-  });
-}
+  //if user passes a method name
+  if(typeof arguments[1] === "string"){
+    return _.map(collection, function(val){
+      return val[functionOrKey]();
+    });
+  }
 };
+
+
+
+
+
+
+
+
+/*==========================================================================
+  _.flatten:
+
+  Takes a multidimensional array and converts it to a one-dimensional array.
+  The new array should contain all elements of the multidimensional array.
+
+  Example:
+  _.flatten([1, [2], [3, [[4]]]]);
+  => [1, 2, 3, 4];
+
+========================================================================== */
+_.flatten = function(nestedArray) {
+  var results = [];
+  nestedArray.forEach(function(val) {
+    if(Array.isArray(val)){
+      results = results.concat(_.flatten(val));
+    } else {
+      results = results.concat(val);
+    }
+  });
+  return results;
+};
+
+
+
 
 
 
@@ -749,7 +749,6 @@ if(typeof arguments[1] === "string"){
   Example:
   _.zip(['a','b','c','d'], [1,2,3])
   => [['a',1], ['b',2], ['c',3], ['d',undefined]]
-
 ========================================================================== */
   //
   _.zip = function() {
@@ -763,28 +762,6 @@ if(typeof arguments[1] === "string"){
 
 
 
-/*==========================================================================
-  _.flatten:
-
-  Takes a multidimensional array and converts it to a one-dimensional array.
-  The new array should contain all elements of the multidimensional array.
-
-  Example:
-  _.flatten([1, [2], [3, [[4]]]]);
-  => [1, 2, 3, 4];
-
-========================================================================== */
-_.flatten = function(nestedArray) {
-  var results = [];
-  nestedArray.forEach(function(val) {
-    if(Array.isArray(val)){
-      results = results.concat(_.flatten(val));
-    } else {
-      results = results.concat(val);
-    }
-  });
-  return results;
-};
 
 
 
@@ -798,11 +775,9 @@ _.flatten = function(nestedArray) {
 
   Takes an arbitrary number of arrays and produces an array that contains
   every item shared between all the passed-in arrays.
-
 ========================================================================== */
 
 _.intersection = function() {
-
 };
 
 
@@ -818,11 +793,9 @@ _.intersection = function() {
 
   Take the difference between one array and a number of other arrays.
   Only the elements present in just the first array will remain.
-
 ========================================================================== */
 
 _.difference = function(array) {
-
 };
 
 
@@ -845,10 +818,7 @@ _.difference = function(array) {
 ==========================================================================*/
 
 _.throttle = function(func, wait) {
-
 };
-
-
 
 
 
