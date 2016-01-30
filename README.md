@@ -1,6 +1,6 @@
 # Underbar JS
 
-> A reimplementation of the popular Underscore.js functional utility library.
+> A reimplementation of the popular Underscore.js functional utility library from scratch + unit tested.
 
 
 ## Table of Contents
